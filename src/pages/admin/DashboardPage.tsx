@@ -13,7 +13,7 @@ import PageTransition from "@/components/common/PageTransition"
 const DashboardPage = () => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
-  const jobs = useAppSelector(selectAllJobs)
+  const jobs = useAppSelector(selectAllJobs) ?? []
   const loading = useAppSelector(selectJobsLoading)
 
   useEffect(() => {
@@ -21,10 +21,11 @@ const DashboardPage = () => {
   }, [dispatch])
 
   const totalJobs = jobs.length
-  const activeJobs = jobs.filter((j) => j.status === "active").length
-  const inactiveJobs = jobs.filter((j) => j.status === "inactive").length
-  const categories = new Set(jobs.map((j) => j.category)).size
-  const recentJobs = [...jobs]
+  const safeJobs = jobs ?? []
+  const activeJobs = safeJobs.filter((j) => j.status === "active").length
+  const inactiveJobs = safeJobs.filter((j) => j.status === "inactive").length
+  const categories = new Set(safeJobs.map((j) => j.category)).size
+  const recentJobs = [...safeJobs]
     .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
     .slice(0, 5)
 
