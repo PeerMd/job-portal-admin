@@ -1,0 +1,40 @@
+import { motion, Variants } from "framer-motion"
+
+const pageVariants: Variants = {
+  initial: {
+    opacity: 0,
+    y: 20,
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.3,
+      ease: "easeOut" as const,
+    },
+  },
+  exit: {
+    opacity: 0,
+    y: -10,
+    transition: {
+      duration: 0.2,
+      ease: "easeIn" as const,
+    },
+  },
+}
+
+const PageTransition = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <motion.div
+      variants={pageVariants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      className="overflow-hidden"
+    >
+      {children}
+    </motion.div>
+  )
+}
+
+export default PageTransition
