@@ -102,7 +102,7 @@ const jobsSlice = createSlice({
         state.error = action.payload as string
       })
       .addCase(createJobThunk.fulfilled, (state, action) => {
-        state.jobs.push(action.payload)
+        state.jobs.unshift(action.payload)
         state.pagination.totalPages = Math.ceil(state.jobs.length / state.pagination.itemsPerPage)
       })
       .addCase(updateJobThunk.fulfilled, (state, action) => {

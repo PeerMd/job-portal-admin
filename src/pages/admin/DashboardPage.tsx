@@ -66,7 +66,7 @@ const DashboardPage = () => {
         {/* Stat Cards */}
         <div className="grid grid-cols-1 min-[420px]:grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {statCards.map((card) => (
-            <Card key={card.title}>
+            <Card key={card.title} className="border border-gray-200">
               <CardContent className="flex items-center gap-4 sm:gap-2 pt-6">
                 <div className={`${card.bg} p-3 rounded-full`}>{card.icon}</div>
                 <div>

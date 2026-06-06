@@ -56,7 +56,7 @@ const LoginPage = () => {
 
   return (
     <PageTransition>
-      <Card className="w-full max-w-md shadow-md mx-3 my-3 min-w-[300px] sm:mx-0 sm:min-w-[380px]">
+      <Card className="w-full max-w-md mx-3 my-3 min-w-[300px] sm:mx-0 sm:min-w-[380px] border border-gray-200">
         <CardHeader className="text-center space-y-2">
           <div className="flex justify-center">
             <div className="bg-blue-600 p-3 rounded-full">
