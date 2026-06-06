@@ -90,20 +90,20 @@ const jobsSlice = createSlice({
         state.loading = true
         state.error = null
       })
-      .addCase(fetchJobsThunk.fulfilled, (state, action) => {
-        state.loading = false
-        state.jobs = action.payload
-        state.pagination.totalPages = Math.ceil(
-          action.payload.length / state.pagination.itemsPerPage
-        )
-      })
       .addCase(fetchJobsThunk.rejected, (state, action) => {
         state.loading = false
         state.error = action.payload as string
       })
-      .addCase(createJobThunk.fulfilled, (state, action) => {
-        state.jobs.unshift(action.payload)
-        state.pagination.totalPages = Math.ceil(state.jobs.length / state.pagination.itemsPerPage)
+      .addCase(fetchJobsThunk.fulfilled, (state, action) => {
+        state.loading = false
+        state.jobs = [...action.payload].sort((a, b) => {
+          const dateDiff = new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+          if (dateDiff !== 0) return dateDiff
+          return Number(b.id) - Number(a.id)
+        })
+        state.pagination.totalPages = Math.ceil(
+          action.payload.length / state.pagination.itemsPerPage
+        )
       })
       .addCase(updateJobThunk.fulfilled, (state, action) => {
         const index = state.jobs.findIndex((j) => j.id === action.payload.id)
