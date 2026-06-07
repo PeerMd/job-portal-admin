@@ -123,11 +123,7 @@ const DashboardPage = () => {
                         <td className="py-3 pr-4 text-gray-600">{job.category}</td>
                         <td className="py-3 pr-4">
                           <Badge
-                            className={
-                              job.status === "active"
-                                ? "bg-green-100 text-green-700 hover:bg-green-100 border-green-200 rounded"
-                                : "bg-red-100 text-red-700 hover:bg-red-100 border-red-200 rounded"
-                            }
+                            className={`bg-red-100 rounded ${ job.status === "active" ? "text-green-700 hover:bg-green-100 border-green-200" : "text-red-700 hover:bg-red-100 border-red-200"}`}
                           >
                             {job.status}
                           </Badge>

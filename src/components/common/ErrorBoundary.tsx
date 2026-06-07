@@ -1,5 +1,6 @@
 import { Component, ErrorInfo, ReactNode } from "react"
 import { Button } from "@/components/ui/button"
+import { AlertTriangle } from "lucide-react"
 
 interface Props {
   children: ReactNode
@@ -29,7 +30,9 @@ class ErrorBoundary extends Component<Props, State> {
       return (
         <div className="min-h-screen flex items-center justify-center bg-gray-50">
           <div className="text-center space-y-4">
-            <div className="text-6xl">⚠️</div>
+            <div className="bg-red-100 p-4 rounded-full inline-block">
+              <AlertTriangle className="text-red-600" size={40} />
+            </div>
             <h1 className="text-2xl font-bold text-gray-800">Something went wrong</h1>
             <p className="text-gray-500 max-w-md">
               An unexpected error occurred. Please refresh the page or try again.
