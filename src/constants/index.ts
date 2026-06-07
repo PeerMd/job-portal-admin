@@ -29,7 +29,9 @@ export const ADMIN_CREDENTIALS = {
 };
 
 export const REGEX_PATTERNS = {
-  LETTERS_NUMBERS_SPACES: /^[a-zA-Z0-9\s,.\-\/]+$/,
-  SALARY: /^[a-zA-Z0-9\s\-\/\.LPA]+$/,
+  LETTERS_AND_SPACES: /^[a-zA-Z\s]+$/,
+  LETTERS_SPACES_COMMA: /^[a-zA-Z\s,]+$/,
+  SALARY: /^[0-9]+(\.[0-9]+)?(\s*-\s*[0-9]+(\.[0-9]+)?)?\s*(LPA|lpa|K|k)?$/,
   USERNAME: /^[a-zA-Z0-9_]+$/,
-} as const;
+  DESCRIPTION: /^(?=.*[a-zA-Z]).+$/,
+} as const

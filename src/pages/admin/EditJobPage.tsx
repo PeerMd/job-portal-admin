@@ -106,14 +106,14 @@ const EditJobPage = () => {
                   <Label>
                     Title<span className="text-red-500">*</span>
                   </Label>
-                  <Input placeholder="e.g. Frontend Developer" {...register("title")} />
+                  <Input placeholder="e.g. Frontend Developer" maxLength={50} {...register("title")} />
                   {errors.title && <p className="text-sm text-red-500">{errors.title.message}</p>}
                 </div>
                 <div className="space-y-1">
                   <Label>
                     Company<span className="text-red-500">*</span>
                   </Label>
-                  <Input placeholder="e.g. Tech Corp" {...register("company")} />
+                  <Input placeholder="e.g. Tech Corp" maxLength={100} {...register("company")} />
                   {errors.company && (
                     <p className="text-sm text-red-500">{errors.company.message}</p>
                   )}
@@ -122,7 +122,7 @@ const EditJobPage = () => {
                   <Label>
                     Location<span className="text-red-500">*</span>
                   </Label>
-                  <Input placeholder="e.g. Mumbai, India" {...register("location")} />
+                  <Input placeholder="e.g. Mumbai, India" maxLength={50} {...register("location")} />
                   {errors.location && (
                     <p className="text-sm text-red-500">{errors.location.message}</p>
                   )}
@@ -131,7 +131,7 @@ const EditJobPage = () => {
                   <Label>
                     Salary<span className="text-red-500">*</span>
                   </Label>
-                  <Input placeholder="e.g. 15-20 LPA" {...register("salary")} />
+                  <Input placeholder="e.g. 15-20 LPA" maxLength={20} {...register("salary")} />
                   {errors.salary && <p className="text-sm text-red-500">{errors.salary.message}</p>}
                 </div>
                 <div className="space-y-1">

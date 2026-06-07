@@ -70,7 +70,7 @@ const JobListingPage = () => {
   }, [location.key, dispatch])
 
   useEffect(() => {
-    dispatch(setFilters({ searchQuery: debouncedSearch }))
+    dispatch(setFilters({ searchQuery: debouncedSearch.trim() }))
     dispatch(setCurrentPage(1))
   }, [debouncedSearch, dispatch])
 
