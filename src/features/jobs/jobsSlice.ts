@@ -96,11 +96,7 @@ const jobsSlice = createSlice({
       })
       .addCase(fetchJobsThunk.fulfilled, (state, action) => {
         state.loading = false
-        state.jobs = [...action.payload].sort((a, b) => {
-          const dateDiff = new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-          if (dateDiff !== 0) return dateDiff
-          return Number(b.id) - Number(a.id)
-        })
+        state.jobs = action.payload
         state.pagination.totalPages = Math.ceil(
           action.payload.length / state.pagination.itemsPerPage
         )
